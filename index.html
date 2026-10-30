@@ -9,12 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-</head>
+<style>
+section{scroll-margin-top:90px}.evidence-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.95rem}.evidence-table th,.evidence-table td{text-align:left;padding:12px;border-bottom:1px solid #c9d8ce}.table-wrap{overflow-x:auto}.status-label{display:inline-block;padding:4px 12px;border-radius:20px;background:#dcebe1;color:#173d2a;font-size:.8rem;font-weight:700}.evidence-note{padding:18px 22px;border-left:4px solid #2d7650;background:#e7efe9}.dark a{color:#a8e4be}@media(max-width:850px){.evidence-table{min-width:560px}}
+</style></head>
 <body>
 <header class="nav">
   <a class="brand" href="#top">PoultryAI</a>
   <nav>
-    <a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#market">Market</a>
+    <a href="#status">Status</a><a href="#evidence">Evidence</a><a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#market">Market</a>
     <a href="#business">Business Model</a><a href="#roadmap">Roadmap</a><a href="#team">Team</a>
   </nav>
 </header>
@@ -25,13 +27,41 @@
     <span class="eyebrow">ARC COMMERCIALIZATION PITCH</span>
     <h1>AI-Powered Smart Poultry Monitoring</h1>
     <p class="lead">From research to real-time farm intelligence.</p>
-    <p>Computer Vision and Edge AI for continuous poultry-house monitoring, early mortality detection, and actionable alerts.</p>
+    <p>Research-backed Computer Vision and Edge AI to flag suspected dead birds for prompt human inspection. Commercial farm validation is the next step.</p>
     <div class="actions"><a class="btn" href="#solution">Explore the solution</a><a class="btn ghost" href="#business">Business model</a></div>
   </div>
   <div class="hero-card">
     <div class="flow"><b>Camera</b><span>→</span><b>Edge AI</b><span>→</span><b>Detection</b><span>→</span><b>Alert</b></div>
-    <small>Designed for practical deployment inside commercial poultry houses.</small>
+    <small>Research prototype → proposed commercial MVP → on-farm validation.</small>
   </div>
+</section>
+
+<section id="status">
+<span class="eyebrow">CURRENT STATUS · UPDATED 30 OCTOBER 2026</span>
+<h2>Edge inference demonstrated. Commercial validation ahead.</h2>
+<div class="grid3">
+<article><span class="status-label">Research demonstrated</span><h3>Detection & edge benchmarks</h3><p>YOLOv8n/s/m evaluated on a 4,044-image mixed-source dataset and deployed on Jetson Orin Nano and Raspberry Pi 5. The research manuscript also reports local MQTT event messages.</p></article>
+<article><span class="status-label">Proposed next build</span><h3>Integrated farm MVP</h3><p>Harden the camera-to-alert workflow, add operator review and event logging, and verify alert delivery. End-to-end alert latency has not been separately measured.</p></article>
+<article><span class="status-label">Not yet field validated</span><h3>Commercial farm pilot</h3><p>The reported evaluation used controlled or approximate conditions, not a fully operational commercial poultry house. Long-term reliability, farm-level false alarms and economic benefit remain to be established.</p></article>
+</div>
+<p class="note">Status reflects the available research evidence; it does not imply a production-ready product or a completed farm pilot.</p>
+</section>
+<section id="evidence">
+<span class="eyebrow">RESEARCH EVIDENCE</span><h2>Measured performance, with clear boundaries.</h2>
+<p>Results reported in the research manuscript <cite>Real-Time Poultry Mortality Detection: Edge AI Deployment and Benchmarking</cite>, A. N. Moustafa and E. Moustafa (version reviewed: 8 October 2026). These are manuscript-reported experimental results, not commercial farm performance guarantees.</p>
+<div class="table-wrap"><table class="evidence-table"><caption>Test-set detection metrics — manuscript Table 1</caption><thead><tr><th scope="col">Model</th><th scope="col">Precision</th><th scope="col">Recall</th><th scope="col">mAP@0.5</th><th scope="col">mAP@0.5:0.95</th></tr></thead><tbody>
+<tr><th scope="row">YOLOv8n</th><td>0.87</td><td>0.82</td><td>0.85</td><td>0.62</td></tr>
+<tr><th scope="row">YOLOv8s</th><td>0.91</td><td>0.88</td><td>0.90</td><td>0.68</td></tr>
+<tr><th scope="row">YOLOv8m</th><td>0.94</td><td>0.90</td><td>0.93</td><td>0.72</td></tr></tbody></table></div>
+<div class="table-wrap"><table class="evidence-table"><caption>Edge inference throughput — manuscript Table 2</caption><thead><tr><th scope="col">Device / runtime</th><th scope="col">Model</th><th scope="col">720p FPS</th><th scope="col">1080p FPS</th></tr></thead><tbody>
+<tr><td>Jetson Orin Nano 8 GB / TensorRT</td><th scope="row">YOLOv8n</th><td>28.4</td><td>21.7</td></tr>
+<tr><td>Jetson Orin Nano 8 GB / TensorRT</td><th scope="row">YOLOv8s</th><td>22.1</td><td>16.3</td></tr>
+<tr><td>Jetson Orin Nano 8 GB / TensorRT</td><th scope="row">YOLOv8m</th><td>15.8</td><td>11.2</td></tr>
+<tr><td>Raspberry Pi 5, 4 GB / ONNX Runtime</td><th scope="row">YOLOv8n</th><td>7.9</td><td>5.4</td></tr>
+<tr><td>Raspberry Pi 5, 4 GB / ONNX Runtime</td><th scope="row">YOLOv8s</th><td>5.1</td><td>3.2</td></tr>
+<tr><td>Raspberry Pi 5, 4 GB / ONNX Runtime</td><th scope="row">YOLOv8m</th><td>2.4</td><td>1.6</td></tr></tbody></table></div>
+<p class="note">720p/1080p refer to input video streams; the inference pipeline resizes frames to 640 × 640. The study defines real-time inference as ≥15 FPS. FPS is not end-to-end alert latency. INT8 quantization and pruning were not applied.</p>
+<div class="evidence-note"><b>Evidence still to add:</b> a permission-cleared detection video or annotated sample, a publicly accessible research reference, and reproducible benchmark artifacts. No live demo or public code release is represented here.</div>
 </section>
 
 <section id="problem">
@@ -45,25 +75,33 @@
 
 <section id="solution" class="dark">
   <span class="eyebrow">OUR SOLUTION</span><h2>Continuous visual intelligence at the edge.</h2>
-  <p class="wide">Cameras capture live video inside poultry houses. Computer-vision models run through an Edge AI layer to detect events and convert them into timely, actionable alerts for farm personnel.</p>
+  <p class="wide">The proposed farm workflow captures video, runs local detection, and sends suspected mortality events for operator review. The research prototype reports local MQTT messages containing timestamps and bounding-box coordinates; commercial dashboard integration and alert reliability require validation.</p>
   <div class="steps"><div>01<br><b>Capture</b></div><div>02<br><b>Analyze</b></div><div>03<br><b>Detect</b></div><div>04<br><b>Alert</b></div><div>05<br><b>Act</b></div></div>
 </section>
 
 <section id="product">
   <span class="eyebrow">PRODUCT & TECHNOLOGY</span><h2>A focused MVP with a scalable intelligence layer.</h2>
   <div class="grid2">
-    <article><h3>MVP</h3><p><b>Automated mortality detection</b> with real-time alerts, designed for field validation in a commercial poultry house.</p></article>
-    <article><h3>Expansion</h3><p>Abnormal inactivity, behavioral monitoring, welfare indicators, analytics, and broader decision support.</p></article>
+    <article><h3>Planned commercial MVP</h3><p><b>Suspected dead-bird detection</b> with operator-reviewed alerts, event logging and measured delivery latency, followed by field validation in a commercial poultry house.</p></article>
+    <article><h3>Future expansion</h3><p>Abnormal inactivity, behavioral monitoring, welfare indicators, analytics, and broader decision support.</p></article>
   </div>
   <div class="architecture">Video Cameras → Edge Computing Unit → Computer Vision Models → Event Engine → Dashboard & Alerts</div>
 </section>
 
+<section id="scope" class="dark">
+<span class="eyebrow">DETECTION SCOPE & LIMITATIONS</span><h2>A suspected mortality alert prompts inspection.</h2>
+<div class="grid3">
+<article><h3>What it detects</h3><p>A single-class “Dead Bird” object detector flags visual patterns consistent with dead birds. It does not predict future mortality or diagnose disease.</p></article>
+<article><h3>Known failure modes</h3><p>Resting or sleeping live birds can trigger false positives. Low light, distance and occlusion can cause missed detections. Reliable separation of resting and dead birds is not yet established.</p></article>
+<article><h3>Human confirmation</h3><p>A farm worker checks each suspected event and confirms the bird's condition before action. Temporal cues and explicit live/resting classes are planned research improvements.</p></article>
+</div><p>Planned pilot measurements: confirmed-event recall, false alerts per house per day, time to notification and inspection, uptime, and operator feedback. Acceptance targets will be agreed with the pilot farm before testing.</p>
+</section>
 <section id="advantage">
   <span class="eyebrow">WHY DIFFERENT</span><h2>Not another camera. A farm-intelligence system.</h2>
   <div class="grid3">
-    <article><h3>Continuous</h3><p>Monitoring beyond periodic human inspection.</p></article>
+    <article><h3>Continuous</h3><p>Intended to supplement periodic human inspection; sustained farm operation remains to be tested.</p></article>
     <article><h3>Edge-first</h3><p>Local AI processing supports practical, responsive deployment.</p></article>
-    <article><h3>Actionable</h3><p>Video is converted into detections and alerts—not passive footage.</p></article>
+    <article><h3>Actionable</h3><p>The prototype produces detection events; the farm MVP will validate whether alerts lead to timely operator action.</p></article>
   </div>
 </section>
 
@@ -100,8 +138,8 @@
 <section id="roadmap">
   <span class="eyebrow">COMMERCIALIZATION ROADMAP</span><h2>Research → validated product → scalable business.</h2>
   <div class="timeline">
-    <article><b>1. Research Validation</b><p>Establish technical baseline from existing research.</p></article>
-    <article><b>2. MVP</b><p>Deployable mortality-detection system with alerts.</p></article>
+    <article><b>1. Research Validation</b><p>Reported baseline completed: detection metrics and edge-device throughput. Independent farm validation remains ahead.</p></article>
+    <article><b>2. MVP</b><p>Next: integrate and verify the operator-facing mortality-detection and alert workflow.</p></article>
     <article><b>3. Farm Pilot</b><p>Measure accuracy, false alarms, latency, reliability and economic value.</p></article>
     <article><b>4. Product Validation</b><p>Improve hardware/software and validate customer value.</p></article>
     <article><b>5. Commercial Launch</b><p>Acquire first paying Saudi customers.</p></article>
@@ -110,15 +148,25 @@
 </section>
 
 <section id="team">
-  <span class="eyebrow">TEAM</span><h2>Multidisciplinary experience from AI models to deployed systems.</h2>
-  <p class="wide">The team combines computer vision, AI, embedded/IoT systems, system architecture, UI/UX, and web/mobile development. Previous collaboration on Smart Spout demonstrated the team's ability to build an end-to-end intelligent system integrating sensing hardware, AI analytics, web interfaces, mobile applications, and user notifications.</p>
+<span class="eyebrow">RESEARCH TEAM & DELIVERY EXPERIENCE</span><h2>Computer vision research with industrial delivery experience.</h2>
+<div class="grid2">
+<article><h3>Dr. Abdalla Nabil Moustafa</h3><p><b>Research lead & corresponding author</b></p><p>Assistant Professor, Applied College, Prince Sattam Bin Abdulaziz University. Experience in computer vision, machine learning, software engineering and IoT systems.</p><p>Industrial team lead on the ITIDA–ITAC Smart Spout collaboration between Menoufia University and EA for Software Solutions, supporting delivery of an integrated hardware, mobile, database and web-dashboard MVP.</p><a href="https://orcid.org/0000-0002-0086-5800">ORCID research profile</a></article>
+<article><h3>Esmaeel Moustafa</h3><p><b>Research collaborator & co-author</b></p><p>EA for Software Solutions, Egypt, as listed in the research manuscript.</p><p>Commercial delivery roles, time commitments and any additional team members will be confirmed before pilot execution.</p></article>
+</div><p class="note">Research affiliations identify the authors; they do not imply institutional endorsement, a formal commercial partnership or a confirmed pilot host. Previous Smart Spout delivery experience is separate from PoultryAI field validation.</p>
 </section>
-
-<section class="cta"><h2>From research insight to commercial farm intelligence.</h2><p>ARC can accelerate the journey from validated research to MVP, field pilot, product validation, and commercial deployment.</p></section>
-
+<section id="arc-support" class="cta">
+<span class="eyebrow">PROPOSED ARC SUPPORT REQUEST</span><h2>Turn the research prototype into a measurable farm pilot.</h2>
+<p>Seeking commercialization mentoring, introductions to Saudi poultry farms, customer discovery support, and guidance on IP, data agreements and pilot resources. This is a proposed support plan, not a claim of ARC acceptance or committed funding.</p>
+<div class="grid3">
+<article><h3>Months 1–2 · Define</h3><p>Interview farm operators, agree the pilot workflow, establish data permissions, and document baseline inspection practices and acceptance criteria.</p></article>
+<article><h3>Months 3–4 · Integrate</h3><p>Prepare the camera and edge unit, operator review interface, event logs and alert-delivery tests. Confirm installation and maintenance requirements.</p></article>
+<article><h3>Months 5–6 · Evaluate</h3><p>Subject to farm access and production-cycle timing, run a pilot and report event-level performance, false alerts, uptime, response time, operating cost and willingness to pay.</p></article>
+</div><p><b>Decision gate:</b> proceed toward paid deployment only when field evidence and customer feedback support it. Timing starts after support and farm access are agreed.</p>
+</section>
 <section id="sources">
   <span class="eyebrow">SOURCES & NOTES</span>
   <p>Saudi poultry production figures: General Authority for Statistics (GASTAT), 2024 livestock statistics/news release. Historical poultry-house benchmark: GASTAT Specialized Agricultural Projects Survey (broiler farms), 2017/2018 publication.</p>
+  <p>Research evidence: Moustafa &amp; Moustafa, <cite>Real-Time Poultry Mortality Detection: Edge AI Deployment and Benchmarking</cite>, manuscript version reviewed 8 October 2026, Tables 1–2 and limitations section. Publication acceptance is not asserted. Team experience is based on the project lead’s CV; public verification materials remain to be linked.</p>
   <p>Pricing is a commercialization hypothesis for customer validation and is not presented as an established market price.</p>
 </section>
 </main>
