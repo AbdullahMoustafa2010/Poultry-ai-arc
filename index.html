@@ -16,7 +16,7 @@ section{scroll-margin-top:90px}.evidence-table{width:100%;border-collapse:collap
 <header class="nav">
   <a class="brand" href="#top">PoultryAI</a>
   <nav>
-    <a href="#status">Status</a><a href="#evidence">Evidence</a><a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#market">Market</a>
+    <a href="#status">Status</a><a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#market">Market</a>
     <a href="#business">Business Model</a><a href="#roadmap">Roadmap</a><a href="#team">Team</a>
   </nav>
 </header>
@@ -40,28 +40,11 @@ section{scroll-margin-top:90px}.evidence-table{width:100%;border-collapse:collap
 <span class="eyebrow">CURRENT STATUS · UPDATED 30 OCTOBER 2026</span>
 <h2>Edge inference demonstrated. Commercial validation ahead.</h2>
 <div class="grid3">
-<article><span class="status-label">Research demonstrated</span><h3>Detection & edge benchmarks</h3><p>YOLOv8n/s/m evaluated on a 4,044-image mixed-source dataset and deployed on Jetson Orin Nano and Raspberry Pi 5. The research manuscript also reports local MQTT event messages.</p></article>
+<article><span class="status-label">Research demonstrated</span><h3>Detection & edge processing</h3><p>The project builds on ongoing computer-vision and edge-AI research. Technical research details are reserved while publication is in progress.</p></article>
 <article><span class="status-label">Proposed next build</span><h3>Integrated farm MVP</h3><p>Harden the camera-to-alert workflow, add operator review and event logging, and verify alert delivery. End-to-end alert latency has not been separately measured.</p></article>
 <article><span class="status-label">Not yet field validated</span><h3>Commercial farm pilot</h3><p>The reported evaluation used controlled or approximate conditions, not a fully operational commercial poultry house. Long-term reliability, farm-level false alarms and economic benefit remain to be established.</p></article>
 </div>
 <p class="note">Status reflects the available research evidence; it does not imply a production-ready product or a completed farm pilot.</p>
-</section>
-<section id="evidence">
-<span class="eyebrow">RESEARCH EVIDENCE</span><h2>Measured performance, with clear boundaries.</h2>
-<p>Results reported in the research manuscript <cite>Real-Time Poultry Mortality Detection: Edge AI Deployment and Benchmarking</cite>, A. N. Moustafa and E. Moustafa (version reviewed: 8 October 2026). These are manuscript-reported experimental results, not commercial farm performance guarantees.</p>
-<div class="table-wrap"><table class="evidence-table"><caption>Test-set detection metrics — manuscript Table 1</caption><thead><tr><th scope="col">Model</th><th scope="col">Precision</th><th scope="col">Recall</th><th scope="col">mAP@0.5</th><th scope="col">mAP@0.5:0.95</th></tr></thead><tbody>
-<tr><th scope="row">YOLOv8n</th><td>0.87</td><td>0.82</td><td>0.85</td><td>0.62</td></tr>
-<tr><th scope="row">YOLOv8s</th><td>0.91</td><td>0.88</td><td>0.90</td><td>0.68</td></tr>
-<tr><th scope="row">YOLOv8m</th><td>0.94</td><td>0.90</td><td>0.93</td><td>0.72</td></tr></tbody></table></div>
-<div class="table-wrap"><table class="evidence-table"><caption>Edge inference throughput — manuscript Table 2</caption><thead><tr><th scope="col">Device / runtime</th><th scope="col">Model</th><th scope="col">720p FPS</th><th scope="col">1080p FPS</th></tr></thead><tbody>
-<tr><td>Jetson Orin Nano 8 GB / TensorRT</td><th scope="row">YOLOv8n</th><td>28.4</td><td>21.7</td></tr>
-<tr><td>Jetson Orin Nano 8 GB / TensorRT</td><th scope="row">YOLOv8s</th><td>22.1</td><td>16.3</td></tr>
-<tr><td>Jetson Orin Nano 8 GB / TensorRT</td><th scope="row">YOLOv8m</th><td>15.8</td><td>11.2</td></tr>
-<tr><td>Raspberry Pi 5, 4 GB / ONNX Runtime</td><th scope="row">YOLOv8n</th><td>7.9</td><td>5.4</td></tr>
-<tr><td>Raspberry Pi 5, 4 GB / ONNX Runtime</td><th scope="row">YOLOv8s</th><td>5.1</td><td>3.2</td></tr>
-<tr><td>Raspberry Pi 5, 4 GB / ONNX Runtime</td><th scope="row">YOLOv8m</th><td>2.4</td><td>1.6</td></tr></tbody></table></div>
-<p class="note">720p/1080p refer to input video streams; the inference pipeline resizes frames to 640 × 640. The study defines real-time inference as ≥15 FPS. FPS is not end-to-end alert latency. INT8 quantization and pruning were not applied.</p>
-<div class="evidence-note"><b>Evidence still to add:</b> a permission-cleared detection video or annotated sample, a publicly accessible research reference, and reproducible benchmark artifacts. No live demo or public code release is represented here.</div>
 </section>
 
 <section id="problem">
@@ -75,7 +58,7 @@ section{scroll-margin-top:90px}.evidence-table{width:100%;border-collapse:collap
 
 <section id="solution" class="dark">
   <span class="eyebrow">OUR SOLUTION</span><h2>Continuous visual intelligence at the edge.</h2>
-  <p class="wide">The proposed farm workflow captures video, runs local detection, and sends suspected mortality events for operator review. The research prototype reports local MQTT messages containing timestamps and bounding-box coordinates; commercial dashboard integration and alert reliability require validation.</p>
+  <p class="wide">The proposed farm workflow captures video, runs local detection, and sends suspected mortality events for operator review. Commercial dashboard integration and alert reliability require validation.</p>
   <div class="steps"><div>01<br><b>Capture</b></div><div>02<br><b>Analyze</b></div><div>03<br><b>Detect</b></div><div>04<br><b>Alert</b></div><div>05<br><b>Act</b></div></div>
 </section>
 
@@ -150,9 +133,9 @@ section{scroll-margin-top:90px}.evidence-table{width:100%;border-collapse:collap
 <section id="team">
 <span class="eyebrow">RESEARCH TEAM & DELIVERY EXPERIENCE</span><h2>Computer vision research with industrial delivery experience.</h2>
 <div class="grid2">
-<article><h3>Dr. Abdalla Nabil Moustafa</h3><p><b>Research lead & corresponding author</b></p><p>Assistant Professor, Applied College, Prince Sattam Bin Abdulaziz University. Experience in computer vision, machine learning, software engineering and IoT systems.</p><p>Industrial team lead on the ITIDA–ITAC Smart Spout collaboration between Menoufia University and EA for Software Solutions, supporting delivery of an integrated hardware, mobile, database and web-dashboard MVP.</p><a href="https://orcid.org/0000-0002-0086-5800">ORCID research profile</a></article>
-<article><h3>Esmaeel Moustafa</h3><p><b>Research collaborator & co-author</b></p><p>EA for Software Solutions, Egypt, as listed in the research manuscript.</p><p>Commercial delivery roles, time commitments and any additional team members will be confirmed before pilot execution.</p></article>
-</div><p class="note">Research affiliations identify the authors; they do not imply institutional endorsement, a formal commercial partnership or a confirmed pilot host. Previous Smart Spout delivery experience is separate from PoultryAI field validation.</p>
+<article><h3>Dr. Abdalla Nabil Moustafa</h3><p><b>Research lead</b></p><p>Assistant Professor, Applied College, Prince Sattam Bin Abdulaziz University. Experience in computer vision, machine learning, software engineering and IoT systems.</p><p>Industrial team lead on the ITIDA–ITAC Smart Spout collaboration between Menoufia University and EA for Software Solutions, supporting delivery of an integrated hardware, mobile, database and web-dashboard MVP.</p><a href="https://orcid.org/0000-0002-0086-5800">ORCID research profile</a></article>
+<article><h3>Esmaeel Moustafa</h3><p><b>Research collaborator</b></p><p>EA for Software Solutions, Egypt.</p><p>Commercial delivery roles, time commitments and any additional team members will be confirmed before pilot execution.</p></article>
+</div><p class="note">Research affiliations identify the researchers; they do not imply institutional endorsement, a formal commercial partnership or a confirmed pilot host. Previous Smart Spout delivery experience is separate from PoultryAI field validation.</p>
 </section>
 <section id="arc-support" class="cta">
 <span class="eyebrow">PROPOSED ARC SUPPORT REQUEST</span><h2>Turn the research prototype into a measurable farm pilot.</h2>
@@ -166,7 +149,6 @@ section{scroll-margin-top:90px}.evidence-table{width:100%;border-collapse:collap
 <section id="sources">
   <span class="eyebrow">SOURCES & NOTES</span>
   <p>Saudi poultry production figures: General Authority for Statistics (GASTAT), 2024 livestock statistics/news release. Historical poultry-house benchmark: GASTAT Specialized Agricultural Projects Survey (broiler farms), 2017/2018 publication.</p>
-  <p>Research evidence: Moustafa &amp; Moustafa, <cite>Real-Time Poultry Mortality Detection: Edge AI Deployment and Benchmarking</cite>, manuscript version reviewed 8 October 2026, Tables 1–2 and limitations section. Publication acceptance is not asserted. Team experience is based on the project lead’s CV; public verification materials remain to be linked.</p>
   <p>Pricing is a commercialization hypothesis for customer validation and is not presented as an established market price.</p>
 </section>
 </main>
